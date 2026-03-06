@@ -26,10 +26,11 @@ const Navber = () => {
           <input className="py-1.5 w-full bg-transparent outline-none placeholder-gray-500" type="text" placeholder="Search products" />
           <img src={assets.search_icon} alt="search" className='w-4 h-4' />
         </div>
-        <NavLink to='/cart' >
-          <img className='w-6' src={assets.cart_icon} alt="" />
+        <NavLink to='/cart' className='relative cursor-pointer' >
+          <img onClick={() => navigate("/cart")} src={assets.cart_icon} alt="cart" className='w-6 opacity-80' />
+          <button className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full">0</button>
         </NavLink>
-        <button onClick={()=> setShowUserLogin(true)} className='bg-primary text-white px-8 py-2 rounded-full'>Login</button>
+        <button onClick={()=> setShowUserLogin(true)} className='cursor-pointer bg-primary text-white px-8 py-2 rounded-full'>Login</button>
       </div>
 
 
