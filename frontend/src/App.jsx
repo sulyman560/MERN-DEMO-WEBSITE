@@ -11,14 +11,22 @@ import Contact from "./pages/Contact"
 import About from "./pages/About"
 import Footer from "./components/Footer"
 import Loading from "./pages/seller/Loading"
+import Login from "./components/Login"
+import { useAppContext } from "./context/AppContext"
 
 
 function App() {
+
+  const {showUserLogin , isSeller} = useAppContext()
 
   return (
     <>
       <div className="text-default min-h-screen text-gray-700 bg-white">
         <Navber />
+
+        {
+          showUserLogin ? <Login /> : null
+        }
         
         <div className="px-6 md:px-16 lg:px-24 xl:px-32">
           <Routes>

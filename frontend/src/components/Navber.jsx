@@ -1,17 +1,12 @@
 import React, { useEffect } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { assets } from '../assets/assets'
+import { useAppContext } from '../context/AppContext'
 
 const Navber = () => {
 
+  const { setShowUserLogin } = useAppContext()
   const navigate = useNavigate()
-  const [scrolled, setScrolled] = React.useState(false);
-  // bg change on scroll
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
   const [open, setOpen] = React.useState(false)
 
   return (
@@ -27,13 +22,14 @@ const Navber = () => {
         <NavLink to='/products' >All Product</NavLink>
         <NavLink to='/about' >About</NavLink>
         <NavLink to='/contact' >Contact</NavLink>
-        <NavLink to='/search' >
-          <input type="text" placeholder='Search' className='px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green' />
-        </NavLink>
+        <div className="hidden lg:flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full">
+          <input className="py-1.5 w-full bg-transparent outline-none placeholder-gray-500" type="text" placeholder="Search products" />
+          <img src={assets.search_icon} alt="search" className='w-4 h-4' />
+        </div>
         <NavLink to='/cart' >
           <img className='w-6' src={assets.cart_icon} alt="" />
         </NavLink>
-        <NavLink to='/login' className='bg-primary text-white px-8 py-2 rounded-full'>Login</NavLink>
+        <button onClick={()=> setShowUserLogin(true)} className='bg-primary text-white px-8 py-2 rounded-full'>Login</button>
       </div>
 
 
