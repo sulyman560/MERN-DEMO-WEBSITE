@@ -6,7 +6,7 @@ import BestSeller from '../components/BestSeller'
 
 const Home = () => {
   return (
-    <div className='p-10 items-center justify-center'>
+    <div className='mt-10 items-center justify-center'>
       <MainBanner />
       <Categories />
       <BestSeller />
